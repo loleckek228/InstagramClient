@@ -1,13 +1,45 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppVioletTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryVioletTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkVioletTheme</item>
+        <item name="colorAccent">@color/colorAccentVioletTheme</item>
+    </style>
+
+    <style name="AppRedTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryRedTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkRedTheme</item>
+        <item name="colorAccent">@color/colorAccentRedTheme</item>
+    </style>
+
+    <style name="AppGreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryGreenTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkGreenTheme</item>
+        <item name="colorAccent">@color/colorAccentGreenTheme</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppVioletTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppRedTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppGreenTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

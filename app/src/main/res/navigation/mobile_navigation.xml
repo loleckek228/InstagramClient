@@ -10,4 +10,5 @@
         android:name="com.geekbrains.android.instagramclient.ui.fragments.MainPageFragment"
         android:label="@string/menu_main_page"
         tools:layout="@layout/fragment_main_page" />
+
 </navigation>

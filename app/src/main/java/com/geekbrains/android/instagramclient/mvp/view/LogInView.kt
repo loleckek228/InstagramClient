@@ -8,4 +8,5 @@ import moxy.viewstate.strategy.StateStrategyType
 interface LogInView: MvpView {
     fun showSnackbar()
     fun enterToMainActivity()
+    fun closeApp()
 }

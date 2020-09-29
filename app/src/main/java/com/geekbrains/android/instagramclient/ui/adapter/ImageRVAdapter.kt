@@ -41,5 +41,9 @@ class ImageRVAdapter(val presenter: IImageListPresenter) :
         override fun setImage(title: String) {
             itemView.imageView.text = title
         }
+
+        override fun isElect(isElect: Boolean) {
+            itemView.checkbox.isChecked = isElect
+        }
     }
 }

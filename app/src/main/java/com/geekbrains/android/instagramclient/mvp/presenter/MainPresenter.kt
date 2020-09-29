@@ -18,6 +18,7 @@ class MainPresenter : MvpPresenter<MainView>() {
             val image = imagies.get(view.getPos())
 
             view.setImage(image.image)
+            view.isElect(image.isElect)
         }
 
         override fun getCount(): Int {

@@ -26,20 +26,20 @@ class DataSource {
     }
 
     private fun addFruitImagies() {
-        fruitImagies.add(Image("Fruit1"))
-        fruitImagies.add(Image("Fruit2"))
-        fruitImagies.add(Image("Fruit3"))
+        fruitImagies.add(Image("Fruit1", false))
+        fruitImagies.add(Image("Fruit2", true))
+        fruitImagies.add(Image("Fruit3", false))
     }
 
     private fun addVegetablesImagies() {
-        vegetablesImagies.add(Image("Vegetable1"))
-        vegetablesImagies.add(Image("Vegetable2"))
-        vegetablesImagies.add(Image("Vegetable3"))
+        vegetablesImagies.add(Image("Vegetable1", true))
+        vegetablesImagies.add(Image("Vegetable2", true))
+        vegetablesImagies.add(Image("Vegetable3", false))
     }
 
     private fun addNatureImagies() {
-        natureImagies.add(Image("Nature1"))
-        natureImagies.add(Image("Nature2"))
-        natureImagies.add(Image("Nature3"))
+        natureImagies.add(Image("Nature1", false))
+        natureImagies.add(Image("Nature2", false))
+        natureImagies.add(Image("Nature3", true))
     }
 }

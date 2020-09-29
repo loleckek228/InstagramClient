@@ -6,11 +6,15 @@ import moxy.MvpPresenter
 
 @InjectViewState
 class LogInPresenter : MvpPresenter<LogInView>() {
-    fun onButtonClick(text: String) {
+    fun onEnterButtonClick(text: String) {
         if (text.isNullOrBlank()) {
             viewState.showSnackbar()
         } else {
             viewState.enterToMainActivity()
         }
+    }
+
+    fun onExitButtonClick() {
+        viewState.closeApp()
     }
 }

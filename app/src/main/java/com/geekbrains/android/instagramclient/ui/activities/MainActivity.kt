@@ -7,13 +7,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.geekbrains.android.instagramclient.R
-import com.geekbrains.android.instagramclient.mvp.model.entity.User
 import com.geekbrains.android.instagramclient.mvp.presenter.MainPresenter
 import com.geekbrains.android.instagramclient.mvp.view.MainView
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter

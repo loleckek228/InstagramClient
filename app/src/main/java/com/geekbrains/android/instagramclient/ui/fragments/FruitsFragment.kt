@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geekbrains.android.instagramclient.R
 import com.geekbrains.android.instagramclient.mvp.presenter.MainPresenter
@@ -36,4 +37,4 @@ class FruitsFragment : MvpAppCompatFragment() {
         adapter = ImageRVAdapter(presenter.getFruitImageListPresenter())
         image_recycler_view.adapter = adapter
     }
-}
+}   

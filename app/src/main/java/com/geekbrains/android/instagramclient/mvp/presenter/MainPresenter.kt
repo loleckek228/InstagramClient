@@ -1,6 +1,6 @@
 package com.geekbrains.android.instagramclient.mvp.presenter
 
-import com.geekbrains.android.instagramclient.mvp.model.DataSource
+import com.geekbrains.android.instagramclient.mvp.model.IDrawableList
 import com.geekbrains.android.instagramclient.mvp.model.Model
 import com.geekbrains.android.instagramclient.mvp.model.entity.Image
 import com.geekbrains.android.instagramclient.mvp.model.repo.ImagiesRepo
@@ -10,15 +10,18 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 
 @InjectViewState
-class MainPresenter : MvpPresenter<MainView>() {
+class MainPresenter(drawableList: IDrawableList) : MvpPresenter<MainView>() {
     class ImageListPresenter : IImageListPresenter {
         var imagies = mutableListOf<Image>()
 
         override fun bind(view: ImageRowView) {
             val image = imagies.get(view.getPos())
 
-            view.setImage(image.image)
-            view.isElect(image.isElect)
+            with(view) {
+                setTitle(image.title)
+                setImage(image.image)
+                isElect(image.isElect)
+            }
         }
 
         override fun getCount(): Int {
@@ -27,7 +30,7 @@ class MainPresenter : MvpPresenter<MainView>() {
     }
 
     private var model: Model = Model()
-    private var imagiesRepo: ImagiesRepo = ImagiesRepo()
+    private var imagiesRepo: ImagiesRepo = ImagiesRepo(drawableList)
     private var fruitImageListPresenter: ImageListPresenter
     private var vegetablesImageListPresenter: ImageListPresenter
     private var natureImageListPresenter: ImageListPresenter

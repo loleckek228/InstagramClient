@@ -11,9 +11,8 @@ import com.geekbrains.android.instagramclient.ui.adapter.ImageRVAdapter
 import kotlinx.android.synthetic.main.fragment_fruits.*
 import moxy.MvpAppCompatFragment
 
-class VegetablesFragment : MvpAppCompatFragment() {
-    private lateinit var presenter: MainPresenter
-    private lateinit var adapter: ImageRVAdapter
+class VegetablesFragment(private val presenter: MainPresenter) : MvpAppCompatFragment() {
+    private lateinit var adapterRV: ImageRVAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,14 +25,15 @@ class VegetablesFragment : MvpAppCompatFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter = MainPresenter()
-
         initRecyclerView()
     }
 
     private fun initRecyclerView() {
-        image_recycler_view.layoutManager = LinearLayoutManager(context)
-        adapter = ImageRVAdapter(presenter.getVegetablesImageListPresenter())
-        image_recycler_view.adapter = adapter
+        adapterRV = ImageRVAdapter(presenter.getVegetablesImageListPresenter())
+
+        image_recycler_view.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = adapterRV
+        }
     }
 }

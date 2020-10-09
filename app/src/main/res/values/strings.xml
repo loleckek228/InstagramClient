@@ -10,4 +10,6 @@
     <string name="exit">Exit</string>
     <string name="menu_vegetables">Vegetables</string>
     <string name="menu_nature">Nature</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

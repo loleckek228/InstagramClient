@@ -5,30 +5,22 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.geekbrains.android.instagramclient.R
 import com.geekbrains.android.instagramclient.mvp.presenter.MainPresenter
 import com.geekbrains.android.instagramclient.mvp.view.MainView
 import com.geekbrains.android.instagramclient.ui.DrawableList
 import com.geekbrains.android.instagramclient.ui.fragments.FruitsFragment
 import com.geekbrains.android.instagramclient.ui.fragments.NatureFragment
-import com.geekbrains.android.instagramclient.ui.fragments.VegetablesFragment
+import com.geekbrains.android.instagramclient.ui.fragments.TabVegetableFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import moxy.presenter.InjectPresenter
 
 class MainActivity : MvpAppCompatActivity(), MainView,
     NavigationView.OnNavigationItemSelectedListener {
-    private val fragmentManager: FragmentManager = supportFragmentManager
 
     private val presenter: MainPresenter
             by moxyPresenter {
@@ -42,7 +34,7 @@ class MainActivity : MvpAppCompatActivity(), MainView,
         setSupportActionBar(toolbar)
 
         initNavigationDrawer()
-        changeFragment(FruitsFragment(presenter))
+        replaceFragment(FruitsFragment(presenter))
         setUserName()
     }
 
@@ -75,15 +67,15 @@ class MainActivity : MvpAppCompatActivity(), MainView,
 
         when (itemId) {
             R.id.nav_fruits -> {
-                changeFragment(FruitsFragment(presenter))
+                replaceFragment(FruitsFragment(presenter))
             }
 
             R.id.nav_vegetables -> {
-                changeFragment(VegetablesFragment(presenter))
+                replaceFragment(TabVegetableFragment(presenter))
             }
 
             R.id.nav_nature -> {
-                changeFragment(NatureFragment(presenter))
+                replaceFragment(NatureFragment(presenter))
             }
 
             else -> onNavigationItemSelected(item)
@@ -93,11 +85,11 @@ class MainActivity : MvpAppCompatActivity(), MainView,
         return true
     }
 
-    private fun changeFragment(fragment: Fragment) {
-        val fragmentTransaction = fragmentManager.beginTransaction()
-
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
-        fragmentTransaction.commit()
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.nav_host_fragment, fragment)
+            .commit()
     }
 
     override fun setUserName(name: String) {

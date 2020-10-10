@@ -1,4 +1,4 @@
-package com.geekbrains.android.instagramclient.ui.fragments
+package com.geekbrains.android.instagramclient.ui.fragments.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,20 +11,31 @@ import com.geekbrains.android.instagramclient.ui.adapter.ImageRVAdapter
 import kotlinx.android.synthetic.main.fragment_fruits.*
 import moxy.MvpAppCompatFragment
 
-class VegetablesFragment(private val presenter: MainPresenter) : MvpAppCompatFragment() {
+class VegetableFragment1(private val presenter: MainPresenter) : MvpAppCompatFragment() {
     private lateinit var adapterRV: ImageRVAdapter
+
+    fun newInstance(bundle: Bundle?): VegetableFragment1 {
+        val fragment = VegetableFragment1(presenter)
+
+        val args = Bundle()
+        args.putBundle("gettedArgs", bundle)
+
+        fragment.arguments = args
+        return fragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_vegetables, container, false)
+        return inflater.inflate(R.layout.fragment_vegetable1, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.setTitle(R.string.vegetables_title)
         initRecyclerView()
     }
 

@@ -15,6 +15,16 @@ import moxy.MvpAppCompatFragment
 class FruitsFragment(private val presenter: MainPresenter) : MvpAppCompatFragment() {
     private lateinit var adapterRV: ImageRVAdapter
 
+    fun newInstance(bundle: Bundle?): FruitsFragment {
+        val fragment = FruitsFragment(presenter)
+
+        val args = Bundle()
+        args.putBundle("gettedArgs", bundle)
+
+        fragment.arguments = args
+        return fragment
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,6 +36,7 @@ class FruitsFragment(private val presenter: MainPresenter) : MvpAppCompatFragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.setTitle(R.string.fruits_title)
         initRecyclerView()
     }
 

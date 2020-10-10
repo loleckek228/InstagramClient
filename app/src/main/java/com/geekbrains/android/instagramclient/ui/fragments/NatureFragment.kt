@@ -14,6 +14,16 @@ import moxy.MvpAppCompatFragment
 class NatureFragment(private val presenter: MainPresenter) : MvpAppCompatFragment() {
     private lateinit var adapterRV: ImageRVAdapter
 
+    fun newInstance(bundle: Bundle?): NatureFragment {
+        val fragment = NatureFragment(presenter)
+
+        val args = Bundle()
+        args.putBundle("gettedArgs", bundle)
+
+        fragment.arguments = args
+        return fragment
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,6 +35,7 @@ class NatureFragment(private val presenter: MainPresenter) : MvpAppCompatFragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.setTitle(R.string.nature_title)
         initRecyclerView()
     }
 

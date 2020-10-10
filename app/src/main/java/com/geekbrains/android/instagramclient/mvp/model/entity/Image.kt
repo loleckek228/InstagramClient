@@ -1,3 +1,5 @@
 package com.geekbrains.android.instagramclient.mvp.model.entity
 
-class Image(val image: String, val isElect: Boolean)
+import android.graphics.drawable.Drawable
+
+class Image(val title: String, val image: Drawable?, val isElect: Boolean)

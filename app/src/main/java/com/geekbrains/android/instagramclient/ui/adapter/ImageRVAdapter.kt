@@ -1,5 +1,6 @@
 package com.geekbrains.android.instagramclient.ui.adapter
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,12 +39,22 @@ class ImageRVAdapter(val presenter: IImageListPresenter) :
             return pos
         }
 
-        override fun setImage(title: String) {
-            itemView.imageView.text = title
+        override fun setTitle(title: String) {
+            with(itemView) {
+                text_view.text = title
+            }
+        }
+
+        override fun setImage(image: Drawable?) {
+            with(itemView) {
+                image_view.setImageDrawable(image)
+            }
         }
 
         override fun isElect(isElect: Boolean) {
-            itemView.checkbox.isChecked = isElect
+            with(itemView) {
+                checkbox.isChecked = isElect
+            }
         }
     }
 }

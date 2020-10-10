@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geekbrains.android.instagramclient.R
 import com.geekbrains.android.instagramclient.mvp.presenter.MainPresenter
@@ -11,9 +12,18 @@ import com.geekbrains.android.instagramclient.ui.adapter.ImageRVAdapter
 import kotlinx.android.synthetic.main.fragment_fruits.*
 import moxy.MvpAppCompatFragment
 
-class FruitsFragment : MvpAppCompatFragment() {
-    private lateinit var presenter: MainPresenter
-    private lateinit var adapter: ImageRVAdapter
+class FruitsFragment(private val presenter: MainPresenter) : MvpAppCompatFragment() {
+    private lateinit var adapterRV: ImageRVAdapter
+
+    fun newInstance(bundle: Bundle?): FruitsFragment {
+        val fragment = FruitsFragment(presenter)
+
+        val args = Bundle()
+        args.putBundle("gettedArgs", bundle)
+
+        fragment.arguments = args
+        return fragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,14 +36,16 @@ class FruitsFragment : MvpAppCompatFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter = MainPresenter()
-
+        activity?.setTitle(R.string.fruits_title)
         initRecyclerView()
     }
 
     private fun initRecyclerView() {
-        image_recycler_view.layoutManager = LinearLayoutManager(context)
-        adapter = ImageRVAdapter(presenter.getFruitImageListPresenter())
-        image_recycler_view.adapter = adapter
+        adapterRV = ImageRVAdapter(presenter.getFruitImageListPresenter())
+
+        image_recycler_view.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = adapterRV
+        }
     }
-}
+}   
